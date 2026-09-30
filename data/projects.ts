@@ -1,0 +1,1 @@
+export const projects = [{ id: "nimbora", title: "Nimbora", description: "Workspace tích hợp AI Agent — nơi agent và con người cùng làm việc.", tags: ["JavaScript", "TypeScript", "CSS", "SQL"], image: "/nimbora-preview.png", liveUrl: "https://nimbora.duckdns.org/", githubUrl: "https://github.com/siloneedsleep/nimbora", featured: true }] as const;
