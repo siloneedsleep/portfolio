@@ -1,0 +1,1 @@
+export const socials = [{ name: "GitHub", url: "https://github.com/siloneedsleep", icon: "Github" }, { name: "Facebook", url: "https://facebook.com/siloneedsleep", icon: "Facebook" }, { name: "Discord", handle: "@siloneedsleep", icon: "MessageCircle" }, { name: "Email", url: "mailto:nimborasupport@gmail.com", icon: "Mail" }] as const;

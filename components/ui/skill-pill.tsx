@@ -1,0 +1,1 @@
+import { Code2 } from "lucide-react"; export function SkillPill({name}:{name:string;icon:string}){return <span className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-2 text-sm transition-colors hover:border-primary hover:bg-accent"><Code2 className="size-4 text-primary" aria-hidden/>{name}</span>}
