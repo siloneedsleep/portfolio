@@ -5,7 +5,7 @@ export const projects = [
     description: "Studio luyện gõ phím song ngữ Việt — Anh yên tĩnh, hỗ trợ bộ gõ Telex/VNI chuẩn grapheme, đấu với Ghost replay, tạo đoạn văn bằng Gemini AI và bảng xếp hạng Daily Flow.",
     tags: ["Next.js", "TypeScript", "Zustand", "Dexie", "Gemini AI", "Upstash Redis"],
     image: "/auratype-preview.png",
-    liveUrl: "https://auratype.vercel.app",
+    liveUrl: "https://auratype.duckdns.org/",
     githubUrl: "https://github.com/siloneedsleep/auratype",
     featured: true,
   },
