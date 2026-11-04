@@ -11,6 +11,13 @@ export function SelectedWork() {
   const content = useTranslations("content");
 
   const getProjectDescription = (id: string, defaultDesc: string) => {
+    if (id === "auratype") {
+      try {
+        return content("auratypeDescription");
+      } catch {
+        return defaultDesc;
+      }
+    }
     if (id === "orbis") {
       try {
         return content("orbisDescription");

@@ -53,6 +53,7 @@
   "content": {
     "about": "Hi, I’m Silo.",
     "projectDescription": "An AI Agent workspace where agents and people work together.",
+    "auratypeDescription": "A quiet bilingual typing studio for Vietnamese and English — featuring grapheme-aware Telex/VNI input, Ghost replay, Gemini AI passage generation, and Daily Flow leaderboards.",
     "orbisDescription": "Autonomous AI Desktop Companion — desktop automation assistant with Hybrid LLM (Local Ollama & Cloud) and a floating HUD overlay.",
     "nimboraDescription": "An AI Agent workspace where agents and people work together.",
     "studentTitle": "10C2 student",

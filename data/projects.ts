@@ -1,5 +1,15 @@
 export const projects = [
   {
+    id: "auratype",
+    title: "AuraType",
+    description: "Studio luyện gõ phím song ngữ Việt — Anh yên tĩnh, hỗ trợ bộ gõ Telex/VNI chuẩn grapheme, đấu với Ghost replay, tạo đoạn văn bằng Gemini AI và bảng xếp hạng Daily Flow.",
+    tags: ["Next.js", "TypeScript", "Zustand", "Dexie", "Gemini AI", "Upstash Redis"],
+    image: "/auratype-preview.png",
+    liveUrl: "https://auratype.vercel.app",
+    githubUrl: "https://github.com/siloneedsleep/auratype",
+    featured: true,
+  },
+  {
     id: "orbis",
     title: "Orbis Agent",
     description: "Autonomous AI Desktop Companion — trợ lý AI điều khiển máy tính, tích hợp Hybrid LLM (Local Ollama & Cloud) với giao diện floating overlay mượt mà.",
