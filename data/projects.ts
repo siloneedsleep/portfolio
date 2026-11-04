@@ -20,6 +20,16 @@ export const projects = [
     featured: true,
   },
   {
+    id: "antigravity-mod",
+    title: "Antigravity Mod",
+    description: "Bộ công cụ tùy biến giao diện & Việt hóa toàn diện cho Google Antigravity 2.0, tích hợp nhân vật 3D Chibi Furina (Three.js/WebGL) tương tác theo từng chữ đang gõ.",
+    tags: ["PowerShell", "Three.js", "WebGL", "JavaScript", "CSS", "CDP"],
+    image: "/antigravity-mod-preview.png",
+    liveUrl: "https://github.com/siloneedsleep/antigravity-mod",
+    githubUrl: "https://github.com/siloneedsleep/antigravity-mod",
+    featured: true,
+  },
+  {
     id: "nimbora",
     title: "Nimbora",
     description: "Workspace tích hợp AI Agent — nơi agent và con người cùng làm việc.",

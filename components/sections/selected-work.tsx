@@ -18,6 +18,13 @@ export function SelectedWork() {
         return defaultDesc;
       }
     }
+    if (id === "antigravity-mod") {
+      try {
+        return content("antigravityModDescription");
+      } catch {
+        return defaultDesc;
+      }
+    }
     if (id === "orbis") {
       try {
         return content("orbisDescription");
