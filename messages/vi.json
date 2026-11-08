@@ -21,6 +21,11 @@
     "viewProject": "Xem dự án",
     "liveDemo": "Demo trực tiếp",
     "sourceCode": "Mã nguồn",
+    "discontinuedBadge": "Ngừng phát triển",
+    "discontinuedAction": "Đã ngừng phát triển",
+    "discontinuedModalTitle": "Dự án đã ngừng phát triển",
+    "discontinuedModalDescription": "Dự án {project} hiện đã ngừng phát triển và không còn mở để xem hoặc truy cập.",
+    "discontinuedModalClose": "Đóng",
     "empty": "Các dự án mới đang được ấp ủ.",
     "loading": "Đang tải"
   },

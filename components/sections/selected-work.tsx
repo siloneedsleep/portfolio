@@ -1,14 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { FolderOpen } from "lucide-react";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { projects } from "@/data/projects";
-import { ProjectCard } from "@/components/ui/project-card";
+import { ProjectCard, type ProjectCardItem } from "@/components/ui/project-card";
+import { DiscontinuedProjectDialog } from "@/components/ui/discontinued-project-dialog";
 
 export function SelectedWork() {
   const t = useTranslations("work");
   const content = useTranslations("content");
+  const [selectedDiscontinued, setSelectedDiscontinued] = useState<ProjectCardItem | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const getProjectDescription = (id: string, defaultDesc: string) => {
     if (id === "auratype") {
@@ -46,6 +50,11 @@ export function SelectedWork() {
     return defaultDesc;
   };
 
+  const handleSelectDiscontinued = (project: ProjectCardItem) => {
+    setSelectedDiscontinued(project);
+    setDialogOpen(true);
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -61,18 +70,30 @@ export function SelectedWork() {
       <div className="mt-10">
         {projects.length ? (
           <div className="grid gap-8 md:grid-cols-2">
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={{
-                  ...project,
-                  description: getProjectDescription(project.id, project.description),
-                }}
-                view={t("viewProject")}
-                live={t("liveDemo")}
-                source={t("sourceCode")}
-              />
-            ))}
+            {projects.map((project) => {
+              const isDiscontinued = "discontinued" in project && Boolean(project.discontinued);
+              return (
+                <ProjectCard
+                  key={project.id}
+                  project={{
+                    id: project.id,
+                    title: project.title,
+                    description: getProjectDescription(project.id, project.description),
+                    tags: project.tags,
+                    image: project.image,
+                    liveUrl: isDiscontinued ? undefined : project.liveUrl,
+                    githubUrl: isDiscontinued ? undefined : project.githubUrl,
+                    discontinued: isDiscontinued,
+                  }}
+                  view={t("viewProject")}
+                  live={t("liveDemo")}
+                  source={t("sourceCode")}
+                  discontinuedBadge={t("discontinuedBadge")}
+                  discontinuedAction={t("discontinuedAction")}
+                  onSelectDiscontinued={handleSelectDiscontinued}
+                />
+              );
+            })}
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed p-14 text-center text-muted-foreground">
@@ -81,6 +102,18 @@ export function SelectedWork() {
           </div>
         )}
       </div>
+
+      <DiscontinuedProjectDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        projectTitle={selectedDiscontinued?.title ?? ""}
+        badgeLabel={t("discontinuedBadge")}
+        title={t("discontinuedModalTitle")}
+        description={t("discontinuedModalDescription", {
+          project: selectedDiscontinued?.title ?? "",
+        })}
+        closeLabel={t("discontinuedModalClose")}
+      />
     </motion.section>
   );
 }

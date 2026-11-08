@@ -1,3 +1,15 @@
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  tags: readonly string[];
+  image: string;
+  liveUrl: string;
+  githubUrl: string;
+  featured: boolean;
+  discontinued?: boolean;
+}
+
 export const projects = [
   {
     id: "auratype",
@@ -18,6 +30,7 @@ export const projects = [
     liveUrl: "https://github.com/siloneedsleep/orbis-agent",
     githubUrl: "https://github.com/siloneedsleep/orbis-agent",
     featured: true,
+    discontinued: true,
   },
   {
     id: "antigravity-mod",
@@ -38,5 +51,6 @@ export const projects = [
     liveUrl: "https://nimbora.duckdns.org/",
     githubUrl: "https://github.com/siloneedsleep/nimbora",
     featured: true,
+    discontinued: true,
   },
-] as const;
+] as const satisfies readonly Project[];

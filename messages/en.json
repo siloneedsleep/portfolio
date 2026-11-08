@@ -21,6 +21,11 @@
     "viewProject": "View project",
     "liveDemo": "Live demo",
     "sourceCode": "Source code",
+    "discontinuedBadge": "Discontinued",
+    "discontinuedAction": "Project discontinued",
+    "discontinuedModalTitle": "Project discontinued",
+    "discontinuedModalDescription": "{project} has been discontinued and is no longer available to view or access.",
+    "discontinuedModalClose": "Close",
     "empty": "New projects are taking shape.",
     "loading": "Loading"
   },
