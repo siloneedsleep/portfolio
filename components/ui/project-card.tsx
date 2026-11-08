@@ -1,29 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import { Ban, ExternalLink, Github, Lock } from "lucide-react";
+import {
+  ArrowUpRight,
+  Ban,
+  BookOpen,
+  ExternalLink,
+  Github,
+  Lock,
+} from "lucide-react";
 import { useState } from "react";
+import { Link } from "@/i18n/navigation";
+import { isValidHttpUrl, type ProjectStatus } from "@/data/projects";
 import { Card } from "./card";
 import { Skeleton } from "./skeleton";
-import { Button } from "./button";
 import { TiltCard } from "@/components/animations/portfolio-motion";
 
 export interface ProjectCardItem {
   id: string;
+  slug: string;
   title: string;
   description: string;
-  tags: readonly string[];
+  stack: readonly string[];
   image: string;
-  liveUrl?: string;
-  githubUrl?: string;
+  imageAlt: string;
+  demoUrl?: string;
+  repositoryUrl?: string;
+  status: ProjectStatus;
   discontinued?: boolean;
+  hasCaseStudy?: boolean;
 }
 
 interface ProjectCardProps {
   project: ProjectCardItem;
-  view: string;
-  live: string;
-  source: string;
+  statusLabel: string;
+  caseStudyLabel: string;
+  liveDemoLabel: string;
+  repositoryLabel: string;
   discontinuedBadge: string;
   discontinuedAction: string;
   onSelectDiscontinued?: (project: ProjectCardItem) => void;
@@ -31,9 +44,10 @@ interface ProjectCardProps {
 
 export function ProjectCard({
   project,
-  view,
-  live,
-  source,
+  statusLabel,
+  caseStudyLabel,
+  liveDemoLabel,
+  repositoryLabel,
   discontinuedBadge,
   discontinuedAction,
   onSelectDiscontinued,
@@ -42,13 +56,14 @@ export function ProjectCard({
 
   if (project.discontinued) {
     return (
-      <Card className="group relative overflow-hidden border-dashed border-border/80 bg-card/70 transition-colors hover:border-muted-foreground/40 has-focus-visible:border-ring">
+      <Card className="group relative flex h-full flex-col overflow-hidden border-dashed border-border/80 bg-card/70 transition-colors hover:border-muted-foreground/40 has-focus-visible:border-ring">
         <div className="relative aspect-[16/9] overflow-hidden bg-muted">
           {!loaded && <Skeleton className="absolute inset-0" />}
           <Image
             src={project.image}
-            alt={project.title}
+            alt={project.imageAlt}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover grayscale opacity-55 transition-opacity duration-300 group-hover:opacity-45"
             onLoad={() => setLoaded(true)}
           />
@@ -74,39 +89,41 @@ export function ProjectCard({
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 p-6">
+        <div className="flex flex-1 flex-col gap-4 p-6">
           <div>
-            <h3 className="text-card-title text-2xl text-foreground/75">
+            <h3 className="text-card-title text-2xl text-foreground/80">
               {project.title}
             </h3>
-            <p className="mt-2 text-muted-foreground/80">{project.description}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {project.description}
+            </p>
           </div>
-          <div className="flex flex-wrap gap-2 opacity-65">
-            {project.tags.map((tag) => (
+          <div className="flex flex-wrap gap-2 opacity-70">
+            {project.stack.map((tech) => (
               <span
-                key={tag}
+                key={tech}
                 className="rounded-full bg-secondary px-2.5 py-1 text-xs text-secondary-foreground"
               >
-                {tag}
+                {tech}
               </span>
             ))}
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
+          <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-border/60 pt-4 text-sm">
             <div aria-hidden="true" className="flex gap-4">
               <span className="inline-flex items-center gap-1 text-muted-foreground/50 line-through">
                 <ExternalLink className="size-4" />
-                {live}
+                {liveDemoLabel}
               </span>
               <span className="inline-flex items-center gap-1 text-muted-foreground/50 line-through">
                 <Github className="size-4" />
-                {source}
+                {repositoryLabel}
               </span>
             </div>
             <button
               type="button"
               onClick={() => onSelectDiscontinued?.(project)}
               aria-label={`${project.title} — ${discontinuedBadge}`}
-              className="inline-flex cursor-pointer items-center gap-1.5 rounded-md text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground after:absolute after:inset-0 after:z-10 after:content-['']"
+              className="inline-flex min-h-9 cursor-pointer items-center gap-1.5 rounded-md text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground after:absolute after:inset-0 after:z-10 after:content-['']"
             >
               <Lock className="size-3.5" aria-hidden="true" />
               <span>{discontinuedBadge}</span>
@@ -117,60 +134,89 @@ export function ProjectCard({
     );
   }
 
+  const hasDemo = isValidHttpUrl(project.demoUrl);
+  const hasRepo = isValidHttpUrl(project.repositoryUrl);
+
   return (
     <TiltCard>
-      <Card className="group overflow-hidden">
+      <Card className="group flex h-full flex-col overflow-hidden transition-colors hover:border-primary/40">
         <div className="relative aspect-[16/9] overflow-hidden bg-muted">
           {!loaded && <Skeleton className="absolute inset-0" />}
           <Image
             src={project.image}
-            alt={project.title}
+            alt={project.imageAlt}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             onLoad={() => setLoaded(true)}
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
-            <Button asChild variant="outline" className="bg-background/90">
-              <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                {view}
-              </a>
-            </Button>
-          </div>
+          <span className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background/90 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur-md">
+            <span
+              aria-hidden="true"
+              className={
+                project.status === "production"
+                  ? "size-1.5 rounded-full bg-emerald-500"
+                  : "size-1.5 rounded-full bg-primary"
+              }
+            />
+            {statusLabel}
+          </span>
         </div>
-        <div className="flex flex-col gap-4 p-6">
+
+        <div className="flex flex-1 flex-col gap-4 p-6">
           <div>
-            <h3 className="text-card-title text-2xl">{project.title}</h3>
-            <p className="mt-2 text-muted-foreground">{project.description}</p>
+            <h3 className="text-card-title text-2xl text-foreground">
+              {project.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {project.description}
+            </p>
           </div>
+
           <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
+            {project.stack.map((tech) => (
               <span
-                key={tag}
+                key={tech}
                 className="rounded-full bg-secondary px-2.5 py-1 text-xs text-secondary-foreground"
               >
-                {tag}
+                {tech}
               </span>
             ))}
           </div>
-          <div className="flex gap-4 text-sm">
-            <a
-              className="inline-flex items-center gap-1 text-primary hover:underline"
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <ExternalLink className="size-4" />
-              {live}
-            </a>
-            <a
-              className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground"
-              href={project.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Github className="size-4" />
-              {source}
-            </a>
+
+          <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border/60 pt-4 text-sm">
+            {project.hasCaseStudy && (
+              <Link
+                href={`/projects/${project.slug}`}
+                className="inline-flex min-h-10 items-center gap-1.5 font-medium text-primary hover:underline"
+              >
+                <BookOpen className="size-4" aria-hidden="true" />
+                {caseStudyLabel}
+              </Link>
+            )}
+            {hasDemo && (
+              <a
+                className="inline-flex min-h-10 items-center gap-1.5 text-foreground transition-colors hover:text-primary"
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="size-4" aria-hidden="true" />
+                {liveDemoLabel}
+              </a>
+            )}
+            {hasRepo && (
+              <a
+                className="inline-flex min-h-10 items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
+                href={project.repositoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="size-4" aria-hidden="true" />
+                {repositoryLabel}
+                <ArrowUpRight className="size-3.5" aria-hidden="true" />
+              </a>
+            )}
           </div>
         </div>
       </Card>

@@ -1,81 +1,140 @@
 {
+  "metadata": {
+    "title": "Silo — Đỗ Trường Thịnh · Full-stack, AI & Desktop Developer",
+    "description": "Portfolio của Đỗ Trường Thịnh (@siloneedsleep) — lập trình viên Full-stack, AI Engineer và phần mềm Desktop với Next.js, TypeScript, Rust và Tauri."
+  },
   "nav": {
     "home": "Trang chủ",
     "work": "Dự án",
     "skills": "Kỹ năng",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "skipToContent": "Bỏ qua đến nội dung chính",
+    "openMenu": "Mở menu điều hướng",
+    "closeMenu": "Đóng menu điều hướng"
   },
   "hero": {
     "greeting": "Xin chào, tớ là",
     "name": "Đỗ Trường Thịnh",
     "handle": "@siloneedsleep",
-    "title": "Freelance Developer · AI Engineer",
+    "title": "Lập trình viên Full-stack · Kỹ sư AI · Phần mềm Desktop",
+    "headline": "Xây dựng phần mềm thông minh và trải nghiệm số tinh gọn.",
+    "summary": "Tớ tập trung vào ứng dụng web hiệu năng cao với Next.js & TypeScript, hệ thống tích hợp AI có kiểm soát quota thực tế và phần mềm desktop đa nền tảng bằng Rust & Tauri. Ưu tiên tốc độ, độ tin cậy và trải nghiệm người dùng rõ ràng.",
     "tagline": "有些相遇，仅仅是为了告别。",
     "taglineSub": "Có những cuộc gặp gỡ, xuất hiện chỉ để học cách nói lời từ biệt.",
-    "ctaWork": "Xem dự án",
-    "ctaContact": "Liên hệ"
+    "ctaWork": "Khám phá dự án",
+    "ctaContact": "Liên hệ",
+    "avatarAlt": "Ảnh đại diện của Đỗ Trường Thịnh (Silo)"
   },
   "work": {
     "title": "Dự án nổi bật",
-    "subtitle": "Một vài thứ tớ đã xây dựng bằng sự tò mò và nhiều đêm mất ngủ.",
-    "viewProject": "Xem dự án",
+    "subtitle": "Những sản phẩm tớ xây dựng với sự chú trọng vào kiến trúc, độ ổn định và trải nghiệm thực tế.",
+    "viewRepository": "Xem repository",
     "liveDemo": "Demo trực tiếp",
-    "sourceCode": "Mã nguồn",
+    "caseStudy": "Chi tiết dự án",
+    "statusProduction": "Đang hoạt động",
+    "statusBeta": "Bản thử nghiệm",
+    "statusInDevelopment": "Đang phát triển",
+    "statusArchived": "Đã lưu trữ",
     "discontinuedBadge": "Ngừng phát triển",
     "discontinuedAction": "Đã ngừng phát triển",
     "discontinuedModalTitle": "Dự án đã ngừng phát triển",
     "discontinuedModalDescription": "Dự án {project} hiện đã ngừng phát triển và không còn mở để xem hoặc truy cập.",
     "discontinuedModalClose": "Đóng",
-    "empty": "Các dự án mới đang được ấp ủ.",
+    "empty": "Các dự án mới đang được chuẩn bị.",
     "loading": "Đang tải"
+  },
+  "caseStudy": {
+    "backToWork": "Quay lại danh sách dự án",
+    "copyLink": "Sao chép liên kết",
+    "linkCopied": "Đã sao chép liên kết dự án",
+    "openDemo": "Mở demo trực tiếp",
+    "openRepository": "Xem mã nguồn trên GitHub",
+    "sections": {
+      "overview": "Tổng quan",
+      "problem": "Vấn đề & Động lực",
+      "solution": "Giải pháp",
+      "features": "Tính năng cốt lõi",
+      "stack": "Công nghệ sử dụng",
+      "architecture": "Kiến trúc hệ thống",
+      "screenshots": "Hình ảnh thực tế",
+      "challenges": "Thách thức kỹ thuật",
+      "lessons": "Bài học rút ra",
+      "scope": "Phạm vi triển khai hiện tại"
+    }
   },
   "skills": {
     "title": "Kỹ năng",
-    "subtitle": "Công cụ giúp tớ biến ý tưởng thành sản phẩm.",
+    "subtitle": "Những ngôn ngữ, framework và công cụ tớ sử dụng trong các dự án thực tế.",
     "languages": "Ngôn ngữ",
     "frameworks": "Frameworks",
     "tools": "Công cụ"
   },
   "contact": {
     "title": "Cùng tạo điều gì đó",
-    "subtitle": "Có một ý tưởng? Hãy gửi lời chào, tớ sẽ phản hồi sớm nhất có thể.",
-    "email": "Email",
-    "social": "Mạng xã hội",
+    "subtitle": "Có ý tưởng hoặc cần trao đổi về dự án web, AI hay desktop? Hãy nhắn cho tớ, tớ sẽ phản hồi sớm nhất có thể.",
+    "emailLabel": "Email liên hệ cá nhân & trao đổi dự án",
+    "copyEmail": "Sao chép email",
+    "emailCopied": "Đã sao chép email vào bộ nhớ tạm",
+    "social": "Kết nối khác",
+    "discordLabel": "Discord",
     "form": {
       "name": "Tên của bạn",
       "email": "Email của bạn",
-      "message": "Bạn muốn nói gì?",
+      "message": "Nội dung bạn muốn trao đổi",
+      "honeypot": "Website (bỏ trống)",
       "send": "Gửi tin nhắn",
       "sending": "Đang gửi...",
-      "success": "Đã gửi! Cảm ơn bạn đã liên hệ.",
-      "error": "Vui lòng kiểm tra lại thông tin."
+      "sent": "Đã gửi",
+      "success": "Đã gửi tin nhắn thành công! Cảm ơn bạn đã liên hệ.",
+      "error": "Không thể gửi tin nhắn lúc này. Vui lòng thử lại hoặc gửi trực tiếp qua email.",
+      "notConfigured": "Cổng gửi form trên server chưa được kích hoạt. Bạn vui lòng bấm nút mở email hoặc sao chép địa chỉ email bên cạnh để liên hệ trực tiếp.",
+      "rateLimited": "Bạn gửi quá nhiều yêu cầu liên tiếp. Vui lòng thử lại sau ít phút.",
+      "timeout": "Kết nối tới máy chủ bị quá thời gian. Vui lòng thử lại.",
+      "openMailto": "Mở ứng dụng email"
+    },
+    "validation": {
+      "nameRequired": "Vui lòng nhập tên của bạn.",
+      "nameTooShort": "Tên cần có ít nhất 2 ký tự.",
+      "nameTooLong": "Tên không vượt quá 100 ký tự.",
+      "emailRequired": "Vui lòng nhập địa chỉ email.",
+      "emailInvalid": "Địa chỉ email chưa đúng định dạng.",
+      "emailTooLong": "Email không vượt quá 254 ký tự.",
+      "messageRequired": "Vui lòng nhập nội dung tin nhắn.",
+      "messageTooShort": "Nội dung cần có ít nhất 10 ký tự.",
+      "messageTooLong": "Nội dung không vượt quá 2000 ký tự."
     }
   },
   "footer": {
-    "builtWith": "Được xây dựng với Next.js và một chút tò mò.",
-    "rights": "Bản quyền thuộc về Silo."
+    "builtWith": "Xây dựng với Next.js, TypeScript và sự chỉn chu trong từng chi tiết.",
+    "rights": "© 2026 Silo · Đỗ Trường Thịnh. Bảo lưu mọi quyền."
   },
   "content": {
-    "about": "Chào, tớ là Silo.",
-    "projectDescription": "Workspace tích hợp AI Agent — nơi agent và con người cùng làm việc.",
-    "auratypeDescription": "Studio luyện gõ phím song ngữ Việt — Anh yên tĩnh, hỗ trợ bộ gõ Telex/VNI chuẩn grapheme, đấu với Ghost replay, tạo đoạn văn bằng Gemini AI và bảng xếp hạng Daily Flow.",
-    "orbisDescription": "Autonomous AI Desktop Companion — trợ lý AI điều khiển máy tính, tích hợp Hybrid LLM (Local Ollama & Cloud) với giao diện floating overlay mượt mà.",
+    "auratypeDescription": "Studio luyện gõ phím song ngữ Việt — Anh yên tĩnh, hỗ trợ Telex/VNI chuẩn grapheme, đấu với Ghost replay, tạo đoạn văn bằng Gemini AI và lưu tiến trình cục bộ qua IndexedDB.",
+    "auratypePreviewAlt": "Giao diện phòng luyện gõ song ngữ AuraType",
+    "orbisDescription": "Trợ lý AI điều khiển máy tính viết bằng Rust & Tauri, tích hợp Hybrid LLM (Ollama cục bộ & Cloud) với giao diện floating overlay.",
+    "orbisPreviewAlt": "Ảnh xem trước ứng dụng Orbis Agent",
     "nimboraDescription": "Workspace tích hợp AI Agent — nơi agent và con người cùng làm việc.",
-    "antigravityModDescription": "Bộ công cụ tùy biến giao diện & Việt hóa toàn diện cho Google Antigravity 2.0, tích hợp nhân vật 3D Chibi Furina (Three.js/WebGL) tương tác theo từng chữ đang gõ.",
-    "studentTitle": "Học sinh 10C2",
-    "studentDescription": "Đang học lớp 10, tập trung vào lập trình và AI.",
-    "launchTitle": "Ra mắt Nimbora",
-    "launchDescription": "Workspace tích hợp AI Agent đầu tiên.",
-    "startedTitle": "Bắt đầu học lập trình",
-    "startedDescription": "Bắt đầu với Python, sau đó chuyển sang web development."
+    "nimboraPreviewAlt": "Ảnh xem trước workspace Nimbora",
+    "antigravityModDescription": "Bản mod giao diện không chính thức & Việt hóa cho Google Antigravity 2.0, tích hợp nhân vật 3D Chibi Furina (Three.js/WebGL) xoay theo con trỏ chữ đang gõ.",
+    "antigravityModPreviewAlt": "Giao diện tùy biến của Antigravity Mod trên Google Antigravity 2.0",
+    "antigravityModFurinaAlt": "Mô hình 3D Chibi Furina dựng bằng Three.js trong Antigravity Mod"
   },
   "common": {
     "theme": "Giao diện",
     "language": "Ngôn ngữ",
-    "toggleTheme": "Đổi giao diện",
-    "toggleLanguage": "Đổi ngôn ngữ",
+    "switchToLight": "Chuyển sang giao diện sáng",
+    "switchToDark": "Chuyển sang giao diện tối",
+    "switchLanguage": "Chuyển sang tiếng Anh",
     "close": "Đóng",
     "copy": "Sao chép",
-    "copied": "Đã sao chép"
+    "copied": "Đã sao chép",
+    "scrollToTop": "Cuộn lên đầu trang",
+    "toastClose": "Đóng thông báo"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "subtitle": "Đường dẫn bạn truy cập không tồn tại hoặc dự án liên kết không còn khả dụng.",
+    "backHome": "Về trang chủ",
+    "viewProjects": "Xem các dự án"
   }
 }

@@ -1,2 +1,87 @@
-"use client"; import Image from "next/image"; import { ArrowRight, Mail } from "lucide-react"; import { useTranslations } from "next-intl"; import { motion } from "motion/react"; import { Button } from "@/components/ui/button"; import { ThinkingOrbs } from "@/components/ui/thinking-orbs"; import { profile } from "@/data/profile"; import { Magnetic, Typewriter } from "@/components/animations/portfolio-motion";
-export function Hero(){const t=useTranslations("hero"); return <section id="hero" className="relative flex min-h-[90vh] scroll-mt-20 items-center overflow-hidden"><div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden"><motion.div className="absolute left-20 top-20 size-96 rounded-full bg-primary/30 blur-3xl" animate={{y:[-30,30],x:[-20,20]}} transition={{duration:8,repeat:Infinity,repeatType:"reverse"}}/><motion.div className="absolute bottom-20 right-20 size-80 rounded-full bg-blue-400/25 blur-3xl" animate={{y:[-30,30],x:[-20,20]}} transition={{duration:10,repeat:Infinity,repeatType:"reverse"}}/><motion.div className="absolute left-1/2 top-1/2 size-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/20 blur-3xl" animate={{y:[-30,30],x:[-20,20]}} transition={{duration:12,repeat:Infinity,repeatType:"reverse"}}/></div><ThinkingOrbs/><div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-28 sm:px-6 md:grid-cols-[1fr_280px] md:py-36"><motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:.6}}><p className="mb-5 text-sm text-primary">{t("greeting")}</p><h1 className="text-display text-shimmer max-w-3xl text-5xl leading-[1.05] sm:text-7xl">{t("name")}</h1><p className="mt-4 font-mono text-sm text-muted-foreground">{t("handle")}</p><p className="mt-8 text-lg text-muted-foreground"><Typewriter text={t("title")} /></p><div className="mt-6 border-l-2 border-primary/40 pl-4"><p className="font-serif text-xl">{Array.from(t("tagline")).map((char,i)=><motion.span key={`${char}-${i}`} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:i*.05}} className="inline-block">{char===" "?"\u00a0":char}</motion.span>)}</p><p className="mt-2 text-sm text-muted-foreground">{t("taglineSub")}</p></div><div className="mt-9 flex flex-wrap gap-3"><Magnetic><motion.div whileHover={{scale:1.02}} whileTap={{scale:.98}}><Button size="lg" asChild><a href="#work">{t("ctaWork")}<ArrowRight className="size-4"/></a></Button></motion.div></Magnetic><motion.div whileHover={{scale:1.02}} whileTap={{scale:.98}}><Button size="lg" variant="outline" asChild><a href="#contact"><Mail className="size-4"/>{t("ctaContact")}</a></Button></motion.div></div></motion.div><motion.div initial={{opacity:0,scale:.9}} animate={{opacity:1,scale:1}} transition={{delay:.2}} className="relative mx-auto"><div className="absolute -inset-4 rounded-full bg-primary/10 blur-2xl"/><div className="relative rounded-full ring-4 ring-primary/20"><Image src={profile.avatar} alt={`${profile.name} avatar`} width={160} height={160} priority className="relative size-30 rounded-full border-4 border-background object-cover shadow-2xl sm:size-40" onError={(event)=>{event.currentTarget.style.display="none"; event.currentTarget.nextElementSibling?.classList.remove("hidden")}}/><span className="hidden size-30 flex items-center justify-center rounded-full bg-gradient-to-br from-primary to-blue-300 text-5xl font-medium text-primary-foreground sm:size-40 sm:text-6xl">S</span></div></motion.div></div></section>}
+"use client";
+
+import Image from "next/image";
+import { ArrowRight, Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { profile } from "@/data/profile";
+import { Magnetic } from "@/components/animations/portfolio-motion";
+
+export function Hero() {
+  const t = useTranslations("hero");
+
+  return (
+    <section
+      id="hero"
+      className="relative flex min-h-[calc(100svh-4rem)] scroll-mt-20 items-center overflow-hidden pt-16"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div className="absolute -left-24 top-16 size-80 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute bottom-12 right-0 size-96 rounded-full bg-blue-400/10 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1fr_240px] md:py-24">
+        <div className="max-w-2xl">
+          <p className="mb-3 text-sm font-medium text-primary">{t("greeting")}</p>
+          <h1 className="text-display text-foreground">{t("name")}</h1>
+          <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+            <span className="font-mono">{t("handle")}</span>
+            <span aria-hidden="true">·</span>
+            <span>{t("title")}</span>
+          </div>
+
+          <p className="mt-6 text-xl font-medium leading-snug text-foreground sm:text-2xl">
+            {t("headline")}
+          </p>
+          <p className="mt-4 max-w-prose text-base leading-relaxed text-muted-foreground">
+            {t("summary")}
+          </p>
+
+          <blockquote className="mt-6 border-l-2 border-primary/35 pl-4">
+            <p lang="zh-Hans" className="text-base italic text-foreground/85">
+              {t("tagline")}
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">{t("taglineSub")}</p>
+          </blockquote>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Magnetic>
+              <Button size="lg" className="min-h-11" asChild>
+                <a href="#work">
+                  {t("ctaWork")}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </a>
+              </Button>
+            </Magnetic>
+            <Button size="lg" variant="outline" className="min-h-11" asChild>
+              <a href="#contact">
+                <Mail className="size-4" aria-hidden="true" />
+                {t("ctaContact")}
+              </a>
+            </Button>
+          </div>
+        </div>
+
+        <div className="relative mx-auto md:mx-0 md:justify-self-end">
+          <div
+            aria-hidden="true"
+            className="absolute -inset-4 rounded-full bg-primary/10 blur-2xl"
+          />
+          <div className="relative size-36 overflow-hidden rounded-full border-4 border-background shadow-2xl ring-4 ring-primary/20 sm:size-44">
+            <Image
+              src={profile.avatar}
+              alt={t("avatarAlt")}
+              width={176}
+              height={176}
+              priority
+              className="size-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

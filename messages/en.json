@@ -1,26 +1,40 @@
 {
+  "metadata": {
+    "title": "Silo — Đỗ Trường Thịnh · Full-stack, AI & Desktop Developer",
+    "description": "Portfolio of Đỗ Trường Thịnh (@siloneedsleep) — Full-stack Developer, AI Engineer, and Desktop Software builder working with Next.js, TypeScript, Rust, and Tauri."
+  },
   "nav": {
     "home": "Home",
     "work": "Work",
     "skills": "Skills",
-    "contact": "Contact"
+    "contact": "Contact",
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
   },
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Đỗ Trường Thịnh",
     "handle": "@siloneedsleep",
-    "title": "Freelance Developer · AI Engineer",
+    "title": "Full-stack Developer · AI Engineer · Desktop Software",
+    "headline": "Building intelligent software & thoughtful digital experiences.",
+    "summary": "I build fast web applications with Next.js & TypeScript, quota-safe AI integrations, and lightweight desktop software with Rust & Tauri. Focused on reliability, clarity, and real-world engineering over flashy gimmicks.",
     "tagline": "有些相遇，仅仅是为了告别。",
     "taglineSub": "Some encounters happen only to teach us how to say goodbye.",
-    "ctaWork": "View work",
-    "ctaContact": "Get in touch"
+    "ctaWork": "Explore projects",
+    "ctaContact": "Contact me",
+    "avatarAlt": "Portrait avatar of Đỗ Trường Thịnh (Silo)"
   },
   "work": {
     "title": "Selected work",
-    "subtitle": "A few things built with curiosity and many late nights.",
-    "viewProject": "View project",
+    "subtitle": "Projects built with attention to architecture, reliability, and real-world usability.",
+    "viewRepository": "View repository",
     "liveDemo": "Live demo",
-    "sourceCode": "Source code",
+    "caseStudy": "Case study",
+    "statusProduction": "Production",
+    "statusBeta": "Beta",
+    "statusInDevelopment": "In Development",
+    "statusArchived": "Archived",
     "discontinuedBadge": "Discontinued",
     "discontinuedAction": "Project discontinued",
     "discontinuedModalTitle": "Project discontinued",
@@ -29,53 +43,98 @@
     "empty": "New projects are taking shape.",
     "loading": "Loading"
   },
+  "caseStudy": {
+    "backToWork": "Back to projects",
+    "copyLink": "Copy link",
+    "linkCopied": "Project URL copied to clipboard",
+    "openDemo": "Open live demo",
+    "openRepository": "View repository on GitHub",
+    "sections": {
+      "overview": "Overview",
+      "problem": "Problem & Motivation",
+      "solution": "Solution",
+      "features": "Core features",
+      "stack": "Tech stack",
+      "architecture": "Architecture",
+      "screenshots": "Screenshots",
+      "challenges": "Technical challenges",
+      "lessons": "Lessons learned",
+      "scope": "Current deployment scope"
+    }
+  },
   "skills": {
     "title": "Skills",
-    "subtitle": "The tools I use to turn ideas into products.",
+    "subtitle": "Languages, frameworks, and tools I rely on across production projects.",
     "languages": "Languages",
     "frameworks": "Frameworks",
     "tools": "Tools"
   },
   "contact": {
     "title": "Let's make something",
-    "subtitle": "Have an idea? Say hello and I'll get back to you soon.",
-    "email": "Email",
-    "social": "Social",
+    "subtitle": "Have a web, AI, or desktop software idea in mind? Send a message and I'll reply as soon as I can.",
+    "emailLabel": "Direct email for work & project inquiries",
+    "copyEmail": "Copy email",
+    "emailCopied": "Email copied to clipboard",
+    "social": "Elsewhere",
+    "discordLabel": "Discord",
     "form": {
       "name": "Your name",
       "email": "Your email",
-      "message": "What would you like to say?",
+      "message": "What would you like to discuss?",
+      "honeypot": "Website (leave blank)",
       "send": "Send message",
       "sending": "Sending...",
-      "success": "Sent! Thanks for reaching out.",
-      "error": "Please check your details."
+      "sent": "Sent",
+      "success": "Message sent! Thanks for reaching out.",
+      "error": "Could not send your message right now. Please try again or reach out by email.",
+      "notConfigured": "Server email delivery is not configured yet. Please use the email button or copy the address beside the form to contact me directly.",
+      "rateLimited": "Too many requests from your connection. Please wait a few minutes and try again.",
+      "timeout": "The request timed out. Please try again.",
+      "openMailto": "Open email app"
+    },
+    "validation": {
+      "nameRequired": "Please enter your name.",
+      "nameTooShort": "Name must be at least 2 characters.",
+      "nameTooLong": "Name must be at most 100 characters.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "Please enter a valid email address.",
+      "emailTooLong": "Email must be at most 254 characters.",
+      "messageRequired": "Please enter a message.",
+      "messageTooShort": "Message must be at least 10 characters.",
+      "messageTooLong": "Message must be at most 2000 characters."
     }
   },
   "footer": {
-    "builtWith": "Built with Next.js and a little curiosity.",
-    "rights": "Copyright Silo."
+    "builtWith": "Built with Next.js, TypeScript, and deliberate craft.",
+    "rights": "© 2026 Silo · Đỗ Trường Thịnh. All rights reserved."
   },
   "content": {
-    "about": "Hi, I’m Silo.",
-    "projectDescription": "An AI Agent workspace where agents and people work together.",
-    "auratypeDescription": "A quiet bilingual typing studio for Vietnamese and English — featuring grapheme-aware Telex/VNI input, Ghost replay, Gemini AI passage generation, and Daily Flow leaderboards.",
-    "orbisDescription": "Autonomous AI Desktop Companion — desktop automation assistant with Hybrid LLM (Local Ollama & Cloud) and a floating HUD overlay.",
+    "auratypeDescription": "A quiet bilingual Vietnamese–English typing studio featuring grapheme-aware Telex/VNI input, Ghost replay, server-side Gemini AI passage generation, and local IndexedDB progress.",
+    "auratypePreviewAlt": "AuraType bilingual typing studio interface",
+    "orbisDescription": "Autonomous AI Desktop Companion built with Rust & Tauri, pairing Hybrid LLM (local Ollama & Cloud) with a floating HUD overlay.",
+    "orbisPreviewAlt": "Orbis Agent application preview",
     "nimboraDescription": "An AI Agent workspace where agents and people work together.",
-    "antigravityModDescription": "Custom UI Mod & full Vietnamese localization for Google Antigravity 2.0 — featuring an interactive 3D Chibi Furina companion (Three.js/WebGL) with real-time caret tracking, custom themes, and live CDP injection.",
-    "studentTitle": "10C2 student",
-    "studentDescription": "Currently in grade 10, focused on programming and AI.",
-    "launchTitle": "Nimbora launch",
-    "launchDescription": "My first AI Agent-integrated workspace.",
-    "startedTitle": "Started learning programming",
-    "startedDescription": "Started with Python, then moved into web development."
+    "nimboraPreviewAlt": "Nimbora workspace preview",
+    "antigravityModDescription": "Unofficial UI customization & full Vietnamese localization mod for Google Antigravity 2.0, featuring an interactive 3D Chibi Furina companion (Three.js/WebGL) with real-time caret tracking.",
+    "antigravityModPreviewAlt": "Antigravity Mod customized interface inside Google Antigravity 2.0",
+    "antigravityModFurinaAlt": "3D Chibi Furina WebGL model preview rendered with Three.js"
   },
   "common": {
     "theme": "Theme",
     "language": "Language",
-    "toggleTheme": "Toggle theme",
-    "toggleLanguage": "Toggle language",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "switchLanguage": "Switch to Vietnamese",
     "close": "Close",
     "copy": "Copy",
-    "copied": "Copied"
+    "copied": "Copied",
+    "scrollToTop": "Scroll to top",
+    "toastClose": "Dismiss notification"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "The page you requested does not exist or is no longer available.",
+    "backHome": "Back home",
+    "viewProjects": "Explore projects"
   }
 }
