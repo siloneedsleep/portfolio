@@ -63,7 +63,7 @@ export function SelectedWork() {
       <div className="mt-10">
         {validProjects.length ? (
           <div className="grid gap-8 md:grid-cols-2">
-            {validProjects.map((project) => {
+            {validProjects.map((project, index) => {
               const isDiscontinued =
                 "discontinued" in project && Boolean(project.discontinued);
               const altKey = project.images[0]?.altKey;
@@ -79,6 +79,7 @@ export function SelectedWork() {
               return (
                 <ProjectCard
                   key={project.id}
+                  index={index}
                   project={{
                     id: project.id,
                     slug: project.slug,

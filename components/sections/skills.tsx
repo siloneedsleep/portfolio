@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { skills } from "@/data/skills";
 import { SkillPill } from "@/components/ui/skill-pill";
@@ -23,19 +24,29 @@ export function Skills() {
         <p className="mt-4 max-w-xl text-muted-foreground">{t("subtitle")}</p>
 
         <div className="mt-12 grid gap-10 md:grid-cols-3">
-          {groups.map(([title, items]) => (
-            <div key={title}>
+          {groups.map(([title, items], groupIndex) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{
+                duration: 0.45,
+                delay: groupIndex * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
               <h3 className="mb-4 text-sm font-medium text-muted-foreground">
                 {title}
               </h3>
               <ul className="flex flex-wrap gap-2">
-                {items.map((item) => (
+                {items.map((item, itemIndex) => (
                   <li key={item.name}>
-                    <SkillPill {...item} />
+                    <SkillPill {...item} index={itemIndex + groupIndex * 2} />
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

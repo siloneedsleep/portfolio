@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -80,14 +81,17 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="inline-flex min-h-10 items-center gap-2 text-xl font-semibold tracking-tight text-foreground"
+          className="group inline-flex min-h-10 items-center gap-2 text-xl font-semibold tracking-tight text-foreground"
         >
-          <span
+          <motion.span
             aria-hidden="true"
-            className="inline-flex size-7 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground"
+            whileHover={{ rotate: -8, scale: 1.08 }}
+            whileTap={{ scale: 0.94 }}
+            transition={{ type: "spring", stiffness: 420, damping: 20 }}
+            className="inline-flex size-7 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground shadow-sm"
           >
             S
-          </span>
+          </motion.span>
           <span>
             Silo<span className="text-primary">.</span>
           </span>
@@ -112,7 +116,9 @@ export function Navbar() {
               >
                 {link.label}
                 {isActive && (
-                  <span
+                  <motion.span
+                    layoutId="navbar-active-indicator"
+                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
                     aria-hidden="true"
                     className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-primary"
                   />
@@ -127,7 +133,9 @@ export function Navbar() {
               >
                 {link.label}
                 {isActive && (
-                  <span
+                  <motion.span
+                    layoutId="navbar-active-indicator"
+                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
                     aria-hidden="true"
                     className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-primary"
                   />
@@ -150,57 +158,83 @@ export function Navbar() {
             aria-controls="mobile-nav"
             onClick={() => setOpen((prev) => !prev)}
           >
-            {open ? (
-              <X className="size-5" aria-hidden="true" />
-            ) : (
-              <Menu className="size-5" aria-hidden="true" />
-            )}
+            <AnimatePresence mode="wait" initial={false}>
+              {open ? (
+                <motion.span
+                  key="close"
+                  initial={{ rotate: -45, opacity: 0, scale: 0.8 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 45, opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.14 }}
+                  className="inline-flex"
+                >
+                  <X className="size-5" aria-hidden="true" />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="menu"
+                  initial={{ rotate: 45, opacity: 0, scale: 0.8 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: -45, opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.14 }}
+                  className="inline-flex"
+                >
+                  <Menu className="size-5" aria-hidden="true" />
+                </motion.span>
+              )}
+            </AnimatePresence>
           </Button>
         </div>
       </nav>
 
-      {open && (
-        <div
-          id="mobile-nav"
-          className="border-t bg-background px-4 py-3 md:hidden sm:px-6"
-        >
-          <div className="flex flex-col gap-1">
-            {links.map((link) => {
-              const isActive = activeSection === link.id;
-              const className = cn(
-                "flex min-h-11 items-center rounded-lg px-3 py-2 text-sm transition-colors",
-                isActive
-                  ? "bg-secondary font-medium text-foreground"
-                  : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
-              );
-              return isHome ? (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  aria-current={isActive ? "location" : undefined}
-                  onClick={() => {
-                    setActiveSection(link.id);
-                    setOpen(false);
-                  }}
-                  className={className}
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.id}
-                  href={link.href}
-                  aria-current={isActive ? "page" : undefined}
-                  onClick={() => setOpen(false)}
-                  className={className}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-nav"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.14, ease: [0.22, 1, 0.36, 1] }}
+            className="border-t bg-background px-4 py-3 md:hidden sm:px-6"
+          >
+            <div className="stagger-children flex flex-col gap-1">
+              {links.map((link) => {
+                const isActive = activeSection === link.id;
+                const className = cn(
+                  "flex min-h-11 items-center rounded-lg px-3 py-2 text-sm transition-colors",
+                  isActive
+                    ? "bg-secondary font-medium text-foreground"
+                    : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
+                );
+                return isHome ? (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    aria-current={isActive ? "location" : undefined}
+                    onClick={() => {
+                      setActiveSection(link.id);
+                      setOpen(false);
+                    }}
+                    className={className}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.id}
+                    href={link.href}
+                    aria-current={isActive ? "page" : undefined}
+                    onClick={() => setOpen(false)}
+                    className={className}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

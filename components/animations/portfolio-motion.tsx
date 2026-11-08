@@ -122,12 +122,12 @@ export function Magnetic({
       onPointerMove={(event) => {
         if (window.innerWidth < 768 || prefersReducedMotion() || !ref.current) return;
         const rect = ref.current.getBoundingClientRect();
-        ref.current.style.transform = `translate(${
-          (event.clientX - rect.left - rect.width / 2) * 0.1
-        }px, ${(event.clientY - rect.top - rect.height / 2) * 0.1}px)`;
+        ref.current.style.transform = `translate3d(${
+          (event.clientX - rect.left - rect.width / 2) * 0.14
+        }px, ${(event.clientY - rect.top - rect.height / 2) * 0.14}px, 0)`;
       }}
       onPointerLeave={() => {
-        if (ref.current) ref.current.style.transform = "translate(0, 0)";
+        if (ref.current) ref.current.style.transform = "translate3d(0, 0, 0)";
       }}
     >
       {children}
@@ -151,19 +151,25 @@ export function TiltCard({
       onPointerMove={(event) => {
         if (window.innerWidth < 768 || prefersReducedMotion() || !ref.current) return;
         const rect = ref.current.getBoundingClientRect();
+        const px = ((event.clientX - rect.left) / rect.width) * 100;
+        const py = ((event.clientY - rect.top) / rect.height) * 100;
+        ref.current.style.setProperty("--spot-x", `${px}%`);
+        ref.current.style.setProperty("--spot-y", `${py}%`);
         ref.current.style.setProperty(
           "--tilt-x",
-          `${((event.clientY - rect.top) / rect.height - 0.5) * -3}deg`,
+          `${((event.clientY - rect.top) / rect.height - 0.5) * -4.5}deg`,
         );
         ref.current.style.setProperty(
           "--tilt-y",
-          `${((event.clientX - rect.left) / rect.width - 0.5) * 3}deg`,
+          `${((event.clientX - rect.left) / rect.width - 0.5) * 4.5}deg`,
         );
       }}
       onPointerLeave={() => {
         if (!ref.current) return;
         ref.current.style.setProperty("--tilt-x", "0deg");
         ref.current.style.setProperty("--tilt-y", "0deg");
+        ref.current.style.setProperty("--spot-x", "50%");
+        ref.current.style.setProperty("--spot-y", "50%");
       }}
     >
       {children}

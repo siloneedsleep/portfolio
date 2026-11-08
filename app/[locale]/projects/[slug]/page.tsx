@@ -161,26 +161,40 @@ export default async function ProjectCaseStudyPage({
       <div className="flex flex-wrap items-center justify-between gap-4">
         <Link
           href="/#work"
-          className="inline-flex min-h-10 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="group inline-flex min-h-10 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
-          <ArrowLeft className="size-4" aria-hidden="true" />
+          <ArrowLeft
+            className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
+            aria-hidden="true"
+          />
           <span>{tCase("backToWork")}</span>
         </Link>
 
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground">
           <span
+            className="relative flex size-2 items-center justify-center"
             aria-hidden="true"
-            className={
-              project.status === "production"
-                ? "size-1.5 rounded-full bg-emerald-500"
-                : "size-1.5 rounded-full bg-primary"
-            }
-          />
+          >
+            <span
+              className={
+                project.status === "production"
+                  ? "animate-beacon absolute inset-0 rounded-full bg-emerald-500/75"
+                  : "animate-beacon absolute inset-0 rounded-full bg-primary/75"
+              }
+            />
+            <span
+              className={
+                project.status === "production"
+                  ? "relative size-1.5 rounded-full bg-emerald-500"
+                  : "relative size-1.5 rounded-full bg-primary"
+              }
+            />
+          </span>
           {statusMap[project.status]}
         </span>
       </div>
 
-      <header className="mt-8 border-b pb-8">
+      <header className="animate-hero-glide mt-8 border-b pb-8">
         <p className="font-mono text-xs uppercase tracking-wider text-primary">
           {tWork("caseStudy")}
         </p>
@@ -204,27 +218,45 @@ export default async function ProjectCaseStudyPage({
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
           {hasDemo && (
-            <Button size="default" className="min-h-11" asChild>
+            <Button
+              size="default"
+              className="spring-lift group min-h-11 active:scale-[0.98]"
+              asChild
+            >
               <a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ExternalLink className="size-4" aria-hidden="true" />
+                <ExternalLink
+                  className="size-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
                 <span>{tCase("openDemo")}</span>
               </a>
             </Button>
           )}
           {hasRepo && (
-            <Button size="default" variant="outline" className="min-h-11" asChild>
+            <Button
+              size="default"
+              variant="outline"
+              className="spring-lift group min-h-11 active:scale-[0.98]"
+              asChild
+            >
               <a
                 href={project.repositoryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="size-4" aria-hidden="true" />
+                <Github
+                  className="size-4 transition-transform duration-200 group-hover:-rotate-6"
+                  aria-hidden="true"
+                />
                 <span>{tCase("openRepository")}</span>
-                <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                <ArrowUpRight
+                  className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
               </a>
             </Button>
           )}
@@ -262,13 +294,13 @@ export default async function ProjectCaseStudyPage({
             return (
               <figure
                 key={image.src}
-                className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
+                className="scroll-card-enter spring-lift group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-colors hover:border-primary/35"
               >
                 <div
                   className={
                     isSquare
-                      ? "flex aspect-square items-center justify-center bg-muted/40 p-6"
-                      : "relative aspect-[16/9] bg-muted/40"
+                      ? "flex aspect-square items-center justify-center overflow-hidden bg-muted/40 p-6"
+                      : "relative aspect-[16/9] overflow-hidden bg-muted/40"
                   }
                 >
                   {isSquare ? (
@@ -277,7 +309,7 @@ export default async function ProjectCaseStudyPage({
                       alt={altText}
                       width={image.width}
                       height={image.height}
-                      className="max-h-full w-auto object-contain"
+                      className="max-h-full w-auto object-contain transition-transform duration-500 ease-[var(--ease-silo)] group-hover:scale-[1.03]"
                     />
                   ) : (
                     <Image
@@ -287,7 +319,7 @@ export default async function ProjectCaseStudyPage({
                       height={image.height}
                       priority={index === 0}
                       sizes="(max-width: 768px) 100vw, 900px"
-                      className="size-full object-cover"
+                      className="size-full object-cover transition-transform duration-500 ease-[var(--ease-silo)] group-hover:scale-[1.025]"
                     />
                   )}
                 </div>
@@ -303,7 +335,7 @@ export default async function ProjectCaseStudyPage({
       <div className="mt-12 grid gap-6 md:grid-cols-2">
         <section
           aria-labelledby="section-problem"
-          className="rounded-2xl border border-border bg-card p-6"
+          className="scroll-card-enter spring-lift rounded-2xl border border-border bg-card p-6 hover:border-primary/35"
         >
           <h2
             id="section-problem"
@@ -318,7 +350,7 @@ export default async function ProjectCaseStudyPage({
 
         <section
           aria-labelledby="section-solution"
-          className="rounded-2xl border border-border bg-card p-6"
+          className="scroll-card-enter spring-lift rounded-2xl border border-border bg-card p-6 hover:border-primary/35"
         >
           <h2
             id="section-solution"
@@ -343,7 +375,7 @@ export default async function ProjectCaseStudyPage({
           {content.features.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-2xl border border-border bg-card p-5"
+              className="scroll-card-enter spring-lift rounded-2xl border border-border bg-card p-5 hover:border-primary/35"
             >
               <h3 className="flex items-start gap-2.5 text-base font-medium text-foreground">
                 <CheckCircle2
@@ -360,7 +392,7 @@ export default async function ProjectCaseStudyPage({
         </div>
       </section>
 
-      <section aria-labelledby="section-stack" className="mt-12">
+      <section aria-labelledby="section-stack" className="scroll-card-enter mt-12">
         <h2
           id="section-stack"
           className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl"
@@ -371,7 +403,7 @@ export default async function ProjectCaseStudyPage({
           {project.stack.map((tech) => (
             <li
               key={tech}
-              className="rounded-full border border-border bg-secondary px-3.5 py-1.5 font-mono text-xs font-medium text-secondary-foreground"
+              className="spring-lift rounded-full border border-border bg-secondary px-3.5 py-1.5 font-mono text-xs font-medium text-secondary-foreground hover:border-primary/40 hover:text-foreground"
             >
               {tech}
             </li>
@@ -391,7 +423,7 @@ export default async function ProjectCaseStudyPage({
           {content.architecture.map((item) => (
             <div
               key={item.layer}
-              className="rounded-2xl border border-border bg-card p-5"
+              className="scroll-card-enter spring-lift rounded-2xl border border-border bg-card p-5 hover:border-primary/35"
             >
               <h3 className="font-mono text-sm font-medium text-foreground">
                 {item.layer}
@@ -416,7 +448,7 @@ export default async function ProjectCaseStudyPage({
           {content.challenges.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-border bg-card p-5"
+              className="scroll-card-enter spring-lift rounded-2xl border border-border bg-card p-5 hover:border-primary/35"
             >
               <h3 className="text-base font-medium text-foreground">
                 {item.title}
@@ -429,7 +461,7 @@ export default async function ProjectCaseStudyPage({
         </div>
       </section>
 
-      <section aria-labelledby="section-lessons" className="mt-12">
+      <section aria-labelledby="section-lessons" className="scroll-card-enter mt-12">
         <h2
           id="section-lessons"
           className="flex items-center gap-2 text-xl font-semibold tracking-tight text-foreground sm:text-2xl"
@@ -437,7 +469,7 @@ export default async function ProjectCaseStudyPage({
           <Lightbulb className="size-5 text-primary" aria-hidden="true" />
           <span>{tCase("sections.lessons")}</span>
         </h2>
-        <ul className="mt-4 space-y-3 rounded-2xl border border-border bg-card p-6">
+        <ul className="spring-lift mt-4 space-y-3 rounded-2xl border border-border bg-card p-6 hover:border-primary/35">
           {content.lessons.map((lesson) => (
             <li
               key={lesson}
@@ -455,7 +487,7 @@ export default async function ProjectCaseStudyPage({
 
       <section
         aria-labelledby="section-scope"
-        className="mt-12 rounded-2xl border border-border bg-muted/30 p-6"
+        className="scroll-card-enter spring-lift mt-12 rounded-2xl border border-border bg-muted/30 p-6 hover:border-primary/35"
       >
         <h2
           id="section-scope"
@@ -471,9 +503,12 @@ export default async function ProjectCaseStudyPage({
       <div className="mt-12 border-t pt-8">
         <Link
           href="/#work"
-          className="inline-flex min-h-10 items-center gap-2 text-sm font-medium text-primary hover:underline"
+          className="group inline-flex min-h-10 items-center gap-2 text-sm font-medium text-primary hover:underline"
         >
-          <ArrowLeft className="size-4" aria-hidden="true" />
+          <ArrowLeft
+            className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
+            aria-hidden="true"
+          />
           <span>{tCase("backToWork")}</span>
         </Link>
       </div>

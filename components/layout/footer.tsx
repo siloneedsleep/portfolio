@@ -49,7 +49,7 @@ export function Footer() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className="w-fit transition-colors hover:text-foreground"
+                  className="w-fit transition-[color,transform] duration-200 hover:translate-x-1 hover:text-foreground"
                 >
                   {label}
                 </a>
@@ -57,7 +57,7 @@ export function Footer() {
                 <Link
                   key={id}
                   href={`/#${id}`}
-                  className="w-fit transition-colors hover:text-foreground"
+                  className="w-fit transition-[color,transform] duration-200 hover:translate-x-1 hover:text-foreground"
                 >
                   {label}
                 </Link>
@@ -72,7 +72,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="inline-flex size-10 items-center justify-center rounded-lg border border-transparent transition-colors hover:border-border hover:text-foreground"
+                className="spring-lift inline-flex size-10 items-center justify-center rounded-lg border border-transparent hover:border-border hover:bg-card hover:text-foreground"
               >
                 <Github className="size-5" aria-hidden="true" />
               </a>
@@ -81,14 +81,14 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="inline-flex size-10 items-center justify-center rounded-lg border border-transparent transition-colors hover:border-border hover:text-foreground"
+                className="spring-lift inline-flex size-10 items-center justify-center rounded-lg border border-transparent hover:border-border hover:bg-card hover:text-foreground"
               >
                 <Facebook className="size-5" aria-hidden="true" />
               </a>
               <a
                 href={`mailto:${profile.email}`}
                 aria-label="Email"
-                className="inline-flex size-10 items-center justify-center rounded-lg border border-transparent transition-colors hover:border-border hover:text-foreground"
+                className="spring-lift inline-flex size-10 items-center justify-center rounded-lg border border-transparent hover:border-border hover:bg-card hover:text-foreground"
               >
                 <Mail className="size-5" aria-hidden="true" />
               </a>

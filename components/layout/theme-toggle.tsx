@@ -1,6 +1,7 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
@@ -41,13 +42,33 @@ export function ThemeToggle() {
       size="sm"
       aria-label={label}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="min-h-10 min-w-10 cursor-pointer px-2"
+      className="min-h-10 min-w-10 cursor-pointer px-2 active:scale-90"
     >
-      {isDark ? (
-        <Sun className="size-4" aria-hidden="true" />
-      ) : (
-        <Moon className="size-4" aria-hidden="true" />
-      )}
+      <AnimatePresence mode="wait" initial={false}>
+        {isDark ? (
+          <motion.span
+            key="sun"
+            initial={{ rotate: -45, scale: 0.75, opacity: 0 }}
+            animate={{ rotate: 0, scale: 1, opacity: 1 }}
+            exit={{ rotate: 45, scale: 0.75, opacity: 0 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex"
+          >
+            <Sun className="size-4" aria-hidden="true" />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="moon"
+            initial={{ rotate: 45, scale: 0.75, opacity: 0 }}
+            animate={{ rotate: 0, scale: 1, opacity: 1 }}
+            exit={{ rotate: -45, scale: 0.75, opacity: 0 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex"
+          >
+            <Moon className="size-4" aria-hidden="true" />
+          </motion.span>
+        )}
+      </AnimatePresence>
     </Button>
   );
 }

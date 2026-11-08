@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Link2 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { Button } from "./button";
 import { Toast } from "./toast";
 
@@ -40,19 +41,35 @@ export function CopyLinkButton({
         variant="outline"
         size="default"
         onClick={handleCopy}
-        className="min-h-11 cursor-pointer"
+        className="spring-lift min-h-11 cursor-pointer active:scale-[0.98]"
       >
-        {copied ? (
-          <>
-            <Check className="size-4" aria-hidden="true" />
-            <span>{copiedLabel}</span>
-          </>
-        ) : (
-          <>
-            <Link2 className="size-4" aria-hidden="true" />
-            <span>{label}</span>
-          </>
-        )}
+        <AnimatePresence mode="wait" initial={false}>
+          {copied ? (
+            <motion.span
+              key="copied"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.16 }}
+              className="inline-flex items-center gap-2"
+            >
+              <Check className="size-4 text-primary" aria-hidden="true" />
+              <span>{copiedLabel}</span>
+            </motion.span>
+          ) : (
+            <motion.span
+              key="idle"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.16 }}
+              className="inline-flex items-center gap-2"
+            >
+              <Link2 className="size-4" aria-hidden="true" />
+              <span>{label}</span>
+            </motion.span>
+          )}
+        </AnimatePresence>
       </Button>
 
       <Toast

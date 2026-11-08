@@ -2,6 +2,7 @@
 
 import { useId, type ChangeEvent, type Ref } from "react";
 import { AlertCircle } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface FloatingInputProps {
@@ -41,9 +42,9 @@ export function FloatingInput({
   const isEmail = type === "email";
 
   const sharedClasses = cn(
-    "peer min-h-12 w-full rounded-lg border bg-background px-4 pb-2 pt-6 text-base text-foreground outline-none transition-colors focus:border-primary disabled:cursor-not-allowed disabled:opacity-60",
+    "peer min-h-12 w-full rounded-lg border bg-background px-4 pb-2 pt-6 text-base text-foreground outline-none transition-[border-color,box-shadow] duration-200 focus:border-primary focus:ring-3 focus:ring-primary/15 disabled:cursor-not-allowed disabled:opacity-60",
     multiline && "min-h-32 resize-y",
-    error && "border-destructive focus:border-destructive",
+    error && "border-destructive focus:border-destructive focus:ring-destructive/15",
   );
 
   return (
@@ -90,7 +91,7 @@ export function FloatingInput({
         )}
         <label
           htmlFor={id}
-          className="pointer-events-none absolute left-4 top-3.5 origin-left text-sm text-muted-foreground transition-all peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs"
+          className="pointer-events-none absolute left-4 top-3.5 origin-left text-sm text-muted-foreground transition-all duration-200 ease-[var(--ease-silo)] peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs"
         >
           {label}
           {required && (
@@ -100,15 +101,22 @@ export function FloatingInput({
           )}
         </label>
       </div>
-      {error && (
-        <p
-          id={errorId}
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-destructive"
-        >
-          <AlertCircle className="size-3.5 shrink-0" aria-hidden="true" />
-          <span>{error}</span>
-        </p>
-      )}
+      <AnimatePresence initial={false}>
+        {error && (
+          <motion.p
+            key={errorId}
+            id={errorId}
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-destructive"
+          >
+            <AlertCircle className="size-3.5 shrink-0" aria-hidden="true" />
+            <span>{error}</span>
+          </motion.p>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
