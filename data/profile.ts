@@ -6,7 +6,7 @@ export const profile = {
   tagline: "有些相遇，仅仅是为了告别。",
   taglineSub: "Có những cuộc gặp gỡ, xuất hiện chỉ để học cách nói lời từ biệt.",
   about: "Chào, tớ là Silo.",
-  email: "nimborasupport@gmail.com",
+  email: "contact@siloneedsleep.xyz",
   avatar: "/avatar.png",
   siteUrl: "https://www.siloneedsleep.duckdns.org",
   githubUrl: "https://github.com/siloneedsleep",
