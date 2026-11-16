@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { headers } from "next/headers";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
@@ -64,9 +65,9 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: "/og-image.png",
-          width: 1424,
-          height: 752,
+          url: "/og-ocean.jpg",
+          width: 1200,
+          height: 630,
           alt: title,
         },
       ],
@@ -75,7 +76,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/og-image.png"],
+      images: ["/og-ocean.jpg"],
     },
   };
 }
@@ -99,6 +100,16 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} ${mono.variable}`}>
+        <div className="portfolio-backdrop" aria-hidden="true">
+          <Image
+            src="/ocean-background.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[56%_center]"
+          />
+        </div>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider nonce={nonce}>
             <MotionProvider>

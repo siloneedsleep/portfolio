@@ -16,14 +16,6 @@ export function Hero() {
       id="hero"
       className="relative flex min-h-[calc(100svh-4rem)] scroll-mt-20 items-center overflow-hidden pt-16"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-      >
-        <div className="absolute -left-24 top-16 size-80 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-12 right-0 size-96 rounded-full bg-blue-400/5 blur-3xl" />
-      </div>
-
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1fr_240px] md:py-24">
         <div className="max-w-2xl">
           <motion.p
