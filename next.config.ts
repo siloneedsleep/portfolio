@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/secret/slides/:slug",
+        destination: "/secret/slides/:slug/index.html",
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
