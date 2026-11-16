@@ -116,6 +116,7 @@
     letter-spacing: -0.01em;
     line-height: 1.65;
     overflow-x: clip;
+    isolation: isolate;
   }
 
   ::selection {
@@ -588,4 +589,30 @@ dialog.discontinued-dialog[open]:where(:not([data-closing])) {
   .hero-word, .route-enter, .scroll-card-enter { animation: none !important; }
   .spring-lift:hover, .scroll-top:hover { transform: none; }
   .site-header, .scroll-top { transition: opacity 100ms ease-out; }
+}
+
+
+.portfolio-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: clip;
+  pointer-events: none;
+  background: #063c87;
+}
+
+.portfolio-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(255 255 255 / .94), rgb(255 255 255 / .82) 48%, rgb(255 255 255 / .5));
+}
+
+.dark .portfolio-backdrop::after {
+  background: linear-gradient(90deg, rgb(10 16 29 / .9), rgb(10 16 29 / .76) 48%, rgb(10 16 29 / .44));
+}
+
+@media (max-width: 767px) {
+  .portfolio-backdrop::after { background: rgb(255 255 255 / .87); }
+  .dark .portfolio-backdrop::after { background: rgb(10 16 29 / .78); }
 }

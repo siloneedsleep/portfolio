@@ -21,16 +21,16 @@ export const metadata: Metadata = {
     title: `${profile.brand} — ${profile.name}`,
     images: [
       {
-        url: "/og-image.png",
-        width: 1424,
-        height: 752,
+        url: "/og-ocean.jpg",
+        width: 1200,
+        height: 630,
         alt: `${profile.brand} — ${profile.name}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og-image.png"],
+    images: ["/og-ocean.jpg"],
   },
 };
 
