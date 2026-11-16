@@ -5,7 +5,6 @@ import { Hero } from "@/components/sections/hero";
 import { SelectedWork } from "@/components/sections/selected-work";
 import { Skills } from "@/components/sections/skills";
 import { Contact } from "@/components/sections/contact";
-import { Reveal } from "@/components/animations/portfolio-motion";
 
 export default async function LocalePage({
   params,
@@ -53,15 +52,9 @@ export default async function LocalePage({
         dangerouslySetInnerHTML={{ __html: jsonLd }}
       />
       <Hero />
-      <Reveal>
-        <SelectedWork />
-      </Reveal>
-      <Reveal delay={80}>
-        <Skills />
-      </Reveal>
-      <Reveal delay={120}>
-        <Contact />
-      </Reveal>
+      <SelectedWork />
+      <Skills />
+      <Contact />
     </>
   );
 }

@@ -183,7 +183,7 @@ export function Contact() {
     <section id="contact" className="scroll-mt-20 bg-muted/20">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-24 md:grid-cols-2">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.08 }}
           transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
@@ -285,7 +285,7 @@ export function Contact() {
           ref={formScope}
           noValidate
           onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.08 }}
           transition={{ duration: 0.5, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}

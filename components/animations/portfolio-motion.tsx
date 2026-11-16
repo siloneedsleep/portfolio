@@ -123,8 +123,8 @@ export function Magnetic({
         if (window.innerWidth < 768 || prefersReducedMotion() || !ref.current) return;
         const rect = ref.current.getBoundingClientRect();
         ref.current.style.transform = `translate3d(${
-          (event.clientX - rect.left - rect.width / 2) * 0.14
-        }px, ${(event.clientY - rect.top - rect.height / 2) * 0.14}px, 0)`;
+          (event.clientX - rect.left - rect.width / 2) * 0.06
+        }px, ${(event.clientY - rect.top - rect.height / 2) * 0.06}px, 0)`;
       }}
       onPointerLeave={() => {
         if (ref.current) ref.current.style.transform = "translate3d(0, 0, 0)";
@@ -157,11 +157,11 @@ export function TiltCard({
         ref.current.style.setProperty("--spot-y", `${py}%`);
         ref.current.style.setProperty(
           "--tilt-x",
-          `${((event.clientY - rect.top) / rect.height - 0.5) * -4.5}deg`,
+          `${((event.clientY - rect.top) / rect.height - 0.5) * -1.5}deg`,
         );
         ref.current.style.setProperty(
           "--tilt-y",
-          `${((event.clientX - rect.left) / rect.width - 0.5) * 4.5}deg`,
+          `${((event.clientX - rect.left) / rect.width - 0.5) * 1.5}deg`,
         );
       }}
       onPointerLeave={() => {

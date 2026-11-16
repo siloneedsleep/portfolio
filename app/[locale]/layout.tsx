@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { locales, type Locale } from "@/i18n";
 import { profile } from "@/data/profile";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { RouteTransitions } from "@/components/animations/route-transitions";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -20,7 +21,7 @@ const inter = Inter({
 
 const mono = JetBrains_Mono({
   subsets: ["latin", "vietnamese"],
-  variable: "--font-mono",
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
@@ -101,6 +102,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider nonce={nonce}>
             <MotionProvider>
+              <RouteTransitions />
               <PortfolioMotion />
               <Navbar />
               <main id="main-content" tabIndex={-1} className="outline-none">

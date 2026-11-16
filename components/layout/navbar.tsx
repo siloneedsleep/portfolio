@@ -71,7 +71,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b bg-background/80 transition-transform duration-300 backdrop-blur-xl">
+    <header className="site-header fixed inset-x-0 top-0 z-50 border-b bg-background/80 transition-transform duration-300 backdrop-blur-xl">
       <a href="#main-content" className="skip-link">
         {t("skipToContent")}
       </a>

@@ -21,7 +21,7 @@
   --ring: #2563eb;
   --radius: 0.5rem;
   --font-sans: var(--font-inter), Inter, system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
   --ease-silo: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 150ms;
@@ -113,7 +113,8 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    letter-spacing: 0.005em;
+    letter-spacing: -0.01em;
+    line-height: 1.65;
     overflow-x: clip;
   }
 
@@ -155,8 +156,8 @@
 }
 
 .text-display {
-  font-size: clamp(2.25rem, 5vw, 4.25rem);
-  line-height: 1.08;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.18;
   font-weight: 500;
   letter-spacing: -0.03em;
 }
@@ -187,7 +188,7 @@
 
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 1.25rem, 0);
+  transform: translate3d(0, 1rem, 0);
   transition:
     opacity var(--duration-slow) var(--ease-silo),
     transform var(--duration-slow) var(--ease-silo);
@@ -211,11 +212,11 @@
   transform: none;
 }
 
-.nav-hidden header:not(:focus-within) {
+.nav-hidden .site-header:not(:focus-within) {
   transform: translateY(-100%);
 }
 
-.nav-scrolled header {
+.nav-scrolled .site-header {
   box-shadow: 0 10px 30px color-mix(in srgb, var(--foreground) 8%, transparent);
 }
 
@@ -229,9 +230,9 @@
   --spot-x: 50%;
   --spot-y: 50%;
   position: relative;
-  transform: perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform: perspective(1000px) translateY(var(--card-lift, 0px)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
   transition: transform 0.35s var(--ease-silo);
-  will-change: transform;
+
 }
 
 .tilt-spotlight {
@@ -253,6 +254,8 @@
   );
   transition: opacity var(--duration-base) var(--ease-silo);
 }
+
+.tilt-card:hover { --card-lift: -4px; }
 
 .tilt-card:hover .tilt-spotlight::before {
   opacity: 1;
@@ -545,4 +548,44 @@ dialog.discontinued-dialog[open]:where(:not([data-closing])) {
       transform: none;
     }
   }
+}
+
+/* Route snapshots keep the navigation still while content changes. */
+.site-header { view-transition-name: site-navigation; }
+::view-transition-group(*) { animation-duration: 320ms; animation-timing-function: var(--ease-silo); }
+::view-transition-old(root) { animation: route-out 140ms ease-out both; }
+::view-transition-new(root) { animation: route-in 320ms var(--ease-silo) both; }
+::view-transition-old(site-navigation),
+::view-transition-new(site-navigation) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(project-preview),
+::view-transition-new(project-preview) { height: 100%; object-fit: cover; }
+::view-transition-group(project-preview) { overflow: clip; border-radius: 12px; }
+[data-view-transition] .route-enter { animation: none; }
+
+@keyframes route-out { to { opacity: 0; } }
+@keyframes route-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes name-in { from { opacity: 0; transform: translateY(70%); } to { opacity: 1; transform: none; } }
+
+.hero-word-mask { display: inline-block; overflow: clip; vertical-align: bottom; padding-block: .12em; margin-block: -.12em; }
+.hero-word-mask:not(:last-child) { margin-inline-end: .2em; }
+.hero-word { display: inline-block; }
+.hero-name { text-wrap: balance; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .route-enter { animation: route-in 320ms var(--ease-silo) both; }
+  .hero-word { animation: name-in 600ms var(--ease-silo) both; }
+}
+@media (max-width: 767px) {
+  @keyframes route-in { from { opacity: 0; } to { opacity: 1; } }
+  .magnetic { transform: none !important; }
+}
+@media (hover: none) {
+  .tilt-card { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  .hero-word, .route-enter, .scroll-card-enter { animation: none !important; }
+  .spring-lift:hover, .scroll-top:hover { transform: none; }
+  .site-header, .scroll-top { transition: opacity 100ms ease-out; }
 }

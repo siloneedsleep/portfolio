@@ -297,6 +297,7 @@ export default async function ProjectCaseStudyPage({
                 className="scroll-card-enter spring-lift group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-colors hover:border-primary/35"
               >
                 <div
+                  data-project-image={index === 0 ? project.slug : undefined}
                   className={
                     isSquare
                       ? "flex aspect-square items-center justify-center overflow-hidden bg-muted/40 p-6"

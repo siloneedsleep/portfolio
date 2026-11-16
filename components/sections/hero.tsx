@@ -20,16 +20,8 @@ export function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
-        <motion.div
-          animate={{ x: [0, 36, 0], y: [0, 22, 0], scale: [1, 1.06, 1] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-24 top-16 size-80 rounded-full bg-primary/10 blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, -28, 0], y: [0, -24, 0], scale: [1, 1.08, 1] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-12 right-0 size-96 rounded-full bg-blue-400/10 blur-3xl"
-        />
+        <div className="absolute -left-24 top-16 size-80 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute bottom-12 right-0 size-96 rounded-full bg-blue-400/5 blur-3xl" />
       </div>
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1fr_240px] md:py-24">
@@ -42,11 +34,18 @@ export function Hero() {
           >
             {t("greeting")}
           </motion.p>
-          <h1 className="text-display text-foreground">{t("name")}</h1>
+          <h1 className="text-display hero-name text-foreground" aria-label={t("name")}>
+            {t("name").split(" ").map((word, index) => (
+              <span key={index} aria-hidden="true" className="hero-word-mask">
+                <span className="hero-word" style={{ animationDelay: `${index * 70}ms` }}>{word}</span>
+                {" "}
+              </span>
+            ))}
+          </h1>
           <motion.div
             initial={{ y: 10 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.5, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
             className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground"
           >
             <span className="font-mono">{t("handle")}</span>
@@ -57,7 +56,7 @@ export function Hero() {
           <motion.p
             initial={{ y: 12 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.55, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 text-xl font-medium leading-snug text-foreground sm:text-2xl"
           >
             {t("headline")}
@@ -65,7 +64,7 @@ export function Hero() {
           <motion.p
             initial={{ y: 12 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.55, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.55, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
             className="mt-4 max-w-prose text-base leading-relaxed text-muted-foreground"
           >
             {t("summary")}
@@ -74,7 +73,7 @@ export function Hero() {
           <motion.blockquote
             initial={{ y: 12 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.55, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.55, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 border-l-2 border-primary/35 pl-4"
           >
             <p lang="zh-Hans" className="text-base italic text-foreground/85">
@@ -86,7 +85,7 @@ export function Hero() {
           <motion.div
             initial={{ y: 14 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.55, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.55, delay: 0.48, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 flex flex-wrap gap-3"
           >
             <Magnetic>
@@ -129,28 +128,14 @@ export function Hero() {
         >
           <div
             aria-hidden="true"
-            className="animate-silo-float absolute -inset-5 rounded-full bg-primary/15 blur-2xl"
+            className="absolute -inset-5 rounded-full bg-primary/15 blur-2xl"
           />
           <motion.div
-            whileHover={{ scale: 1.04, rotate: 1.5 }}
+            whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 320, damping: 18 }}
             className="relative"
           >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 200 200"
-              className="animate-silo-orbit pointer-events-none absolute -inset-3.5 size-[calc(100%+1.75rem)] text-primary/35"
-            >
-              <circle
-                cx="100"
-                cy="100"
-                r="94"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeDasharray="10 14"
-              />
-            </svg>
+
             <div className="relative size-36 overflow-hidden rounded-full border-4 border-background shadow-2xl ring-4 ring-primary/20 sm:size-44">
               <Image
                 src={profile.avatar}
