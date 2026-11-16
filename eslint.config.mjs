@@ -1,12 +1,17 @@
+import { createRequire } from "node:module";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { FlatCompat } from "@eslint/eslintrc";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const compat = new FlatCompat({ baseDirectory: __dirname });
+const require = createRequire(import.meta.url);
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  resolvePluginsRelativeTo: dirname(require.resolve("eslint-config-next")),
+});
 
 export default defineConfig([
   ...compat.extends("next/core-web-vitals"),
-  globalIgnores([".next/**", "node_modules/**", "next-env.d.ts"]),
+  globalIgnores([".next/**", "node_modules/**", "next-env.d.ts", "public/**/assets/**"]),
 ]);

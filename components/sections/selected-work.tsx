@@ -1,5 +1,6 @@
 "use client";
 
+import { Reveal } from "@/components/animations/portfolio-motion";
 import { useState } from "react";
 import { FolderOpen } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -56,9 +57,11 @@ export function SelectedWork() {
       id="work"
       className="mx-auto max-w-6xl scroll-mt-20 px-4 py-20 sm:px-6 sm:py-24"
     >
-      <p className="font-mono text-sm text-primary">01 /</p>
-      <h2 className="text-display-h2 mt-3">{t("title")}</h2>
-      <p className="mt-4 max-w-xl text-muted-foreground">{t("subtitle")}</p>
+      <Reveal>
+        <p className="font-mono text-sm text-primary">01 /</p>
+        <h2 className="text-display-h2 mt-3">{t("title")}</h2>
+        <p className="mt-4 max-w-xl text-muted-foreground">{t("subtitle")}</p>
+      </Reveal>
 
       <div className="mt-10">
         {validProjects.length ? (

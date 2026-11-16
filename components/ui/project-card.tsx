@@ -58,12 +58,12 @@ export function ProjectCard({
   const [loaded, setLoaded] = useState(false);
 
   const revealProps = {
-    initial: { opacity: 0, y: 24, scale: 0.985 },
+    initial: { opacity: 0, y: 16 },
     whileInView: { opacity: 1, y: 0, scale: 1 },
     viewport: { once: true, amount: 0.05 },
     transition: {
       duration: 0.48,
-      delay: Math.min(index, 6) * 0.09,
+      delay: Math.min(index % 2, 1) * 0.07,
       ease: [0.22, 1, 0.36, 1] as const,
     },
   };
@@ -72,7 +72,8 @@ export function ProjectCard({
     return (
       <motion.div {...revealProps} className="h-full">
         <Card className="spring-lift group relative flex h-full flex-col overflow-hidden border-dashed border-border/80 bg-card/70 transition-colors hover:border-muted-foreground/40 has-focus-visible:border-ring">
-          <div className="relative aspect-[16/9] overflow-hidden bg-muted">
+          <div data-project-image={project.hasCaseStudy ? project.slug : undefined}
+            className="relative aspect-[16/9] overflow-hidden bg-muted">
             {!loaded && <Skeleton className="absolute inset-0" />}
             <Image
               src={project.image}
@@ -157,14 +158,15 @@ export function ProjectCard({
     <motion.div {...revealProps} className="h-full">
       <TiltCard>
         <Card className="tilt-spotlight group flex h-full flex-col overflow-hidden transition-[border-color,box-shadow] duration-300 hover:border-primary/45 hover:shadow-xl">
-          <div className="relative aspect-[16/9] overflow-hidden bg-muted">
+          <div data-project-image={project.hasCaseStudy ? project.slug : undefined}
+            className="relative aspect-[16/9] overflow-hidden bg-muted">
             {!loaded && <Skeleton className="absolute inset-0" />}
             <Image
               src={project.image}
               alt={project.imageAlt}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover transition-transform duration-500 ease-[var(--ease-silo)] group-hover:scale-[1.045]"
+              className="object-cover transition-transform duration-500 ease-[var(--ease-silo)] group-hover:scale-[1.03]"
               onLoad={() => setLoaded(true)}
             />
             <div
@@ -220,6 +222,7 @@ export function ProjectCard({
               {project.hasCaseStudy && (
                 <Link
                   href={`/projects/${project.slug}`}
+                  data-project-transition={project.slug}
                   className="group/link inline-flex min-h-10 items-center gap-1.5 font-medium text-primary hover:underline"
                 >
                   <BookOpen
