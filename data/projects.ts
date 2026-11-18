@@ -26,6 +26,20 @@ export interface Project {
 
 export const projects = [
   {
+    id: "velunamusic",
+    slug: "velunamusic",
+    title: "VelunaMusic",
+    description: "Trình phát nhạc cho Android và Windows với lõi Rust và giao diện kính xanh tùy biến.",
+    stack: ["Rust", "Android", "Windows"],
+    category: "desktop",
+    images: [{ src: "/velunamusic.webp", altKey: "velunamusicPreviewAlt", width: 896, height: 896 }],
+    demoUrl: "https://veluna.siloneedsleep.xyz",
+    repositoryUrl: "https://github.com/siloneedsleep/VelunaMusic",
+    status: "in-development",
+    featured: true,
+    hasCaseStudy: false,
+  },
+  {
     id: "auratype",
     slug: "auratype",
     title: "AuraType",

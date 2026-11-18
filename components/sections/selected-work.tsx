@@ -23,6 +23,7 @@ export function SelectedWork() {
 
   const getProjectDescription = (id: string, defaultDesc: string) => {
     const keyMap: Record<string, string> = {
+      velunamusic: "velunamusicDescription",
       auratype: "auratypeDescription",
       "antigravity-mod": "antigravityModDescription",
       orbis: "orbisDescription",

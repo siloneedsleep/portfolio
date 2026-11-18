@@ -109,6 +109,8 @@
     "rights": "© 2026 Silo · Đỗ Trường Thịnh. All rights reserved."
   },
   "content": {
+    "velunamusicDescription": "A music player for Android and Windows with a shared Rust core and a customizable blue glass interface.",
+    "velunamusicPreviewAlt": "The blue glass musical note of VelunaMusic",
     "auratypeDescription": "A quiet bilingual Vietnamese–English typing studio featuring grapheme-aware Telex/VNI input, Ghost replay, server-side Gemini AI passage generation, and local IndexedDB progress.",
     "auratypePreviewAlt": "AuraType bilingual typing studio interface",
     "orbisDescription": "Autonomous AI Desktop Companion built with Rust & Tauri, pairing Hybrid LLM (local Ollama & Cloud) with a floating HUD overlay.",

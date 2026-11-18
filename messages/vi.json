@@ -109,6 +109,8 @@
     "rights": "© 2026 Silo · Đỗ Trường Thịnh. Bảo lưu mọi quyền."
   },
   "content": {
+    "velunamusicDescription": "Trình phát nhạc cho Android và Windows với lõi Rust và giao diện kính xanh tùy biến.",
+    "velunamusicPreviewAlt": "Biểu tượng nốt nhạc bằng kính xanh của VelunaMusic",
     "auratypeDescription": "Studio luyện gõ phím song ngữ Việt — Anh yên tĩnh, hỗ trợ Telex/VNI chuẩn grapheme, đấu với Ghost replay, tạo đoạn văn bằng Gemini AI và lưu tiến trình cục bộ qua IndexedDB.",
     "auratypePreviewAlt": "Giao diện phòng luyện gõ song ngữ AuraType",
     "orbisDescription": "Trợ lý AI điều khiển máy tính viết bằng Rust & Tauri, tích hợp Hybrid LLM (Ollama cục bộ & Cloud) với giao diện floating overlay.",
