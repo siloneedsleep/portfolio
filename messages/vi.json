@@ -83,6 +83,7 @@
       "message": "Nội dung bạn muốn trao đổi",
       "honeypot": "Website (bỏ trống)",
       "send": "Gửi tin nhắn",
+      "privacyNotice": "Silo dùng tên, email và lời nhắn để phản hồi bạn. Đọc <policy>Chính sách quyền riêng tư</policy>.",
       "sending": "Đang gửi...",
       "sent": "Đã gửi",
       "success": "Đã gửi tin nhắn thành công! Cảm ơn bạn đã liên hệ.",
@@ -105,6 +106,9 @@
     }
   },
   "footer": {
+    "legal": "Thông tin pháp lý",
+    "terms": "Điều khoản sử dụng",
+    "privacy": "Chính sách quyền riêng tư",
     "builtWith": "Xây dựng với Next.js, TypeScript và sự chỉn chu trong từng chi tiết.",
     "rights": "© 2026 Silo · Đỗ Trường Thịnh. Bảo lưu mọi quyền."
   },

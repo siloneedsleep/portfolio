@@ -83,6 +83,7 @@
       "message": "What would you like to discuss?",
       "honeypot": "Website (leave blank)",
       "send": "Send message",
+      "privacyNotice": "Silo uses your name, email and message to reply to your inquiry. Read the <policy>Privacy Policy</policy>.",
       "sending": "Sending...",
       "sent": "Sent",
       "success": "Message sent! Thanks for reaching out.",
@@ -105,6 +106,9 @@
     }
   },
   "footer": {
+    "legal": "Legal information",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
     "builtWith": "Built with Next.js, TypeScript, and deliberate craft.",
     "rights": "© 2026 Silo · Đỗ Trường Thịnh. All rights reserved."
   },

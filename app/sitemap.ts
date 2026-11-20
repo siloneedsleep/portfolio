@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { profile } from "@/data/profile";
 import { getCaseStudySlugs } from "@/data/projects";
+import { legalUpdated } from "@/data/legal";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = profile.siteUrl;
@@ -65,5 +66,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  return [...homeEntries, ...projectEntries];
+  const legalEntries: MetadataRoute.Sitemap = ["terms", "privacy"].flatMap((page) => {
+    const vi = `${baseUrl}/${page}`;
+    const en = `${baseUrl}/en/${page}`;
+    return [vi, en].map((url) => ({
+      url,
+      lastModified: legalUpdated,
+      alternates: { languages: { vi, en } },
+    }));
+  });
+
+  return [...homeEntries, ...projectEntries, ...legalEntries];
 }

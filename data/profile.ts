@@ -8,7 +8,7 @@ export const profile = {
   about: "Chào, tớ là Silo.",
   email: "contact@siloneedsleep.xyz",
   avatar: "/avatar.png",
-  siteUrl: "https://www.siloneedsleep.duckdns.org",
+  siteUrl: "https://www.siloneedsleep.xyz",
   githubUrl: "https://github.com/siloneedsleep",
   facebookUrl: "https://facebook.com/siloneedsleep",
   discordHandle: "@siloneedsleep",
