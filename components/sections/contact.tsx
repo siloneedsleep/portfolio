@@ -12,6 +12,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { profile } from "@/data/profile";
+import { Link } from "@/i18n/navigation";
 import {
   CONTACT_LIMITS,
   validateContactField,
@@ -349,6 +350,16 @@ export function Contact() {
             disabled={status === "sending"}
             required
           />
+
+          <p className="text-sm leading-6 text-muted-foreground">
+            {t.rich("form.privacyNotice", {
+              policy: (label) => (
+                <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">
+                  {label}
+                </Link>
+              ),
+            })}
+          </p>
 
           <ProgressButton
             loading={status === "sending"}
